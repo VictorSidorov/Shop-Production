@@ -1,0 +1,47 @@
+body {
+    background-color: #FFF8DC;
+    padding: 2em;
+    font-family: 'Tahoma','Helvetica','Arial';
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+button {
+    margin: 2em 0;
+    padding: 1em 4em;
+    display: block;
+}
+
+#info {
+    padding: 1em;
+    background-color: #fff;
+    margin: 1em 0;
+}
+
+#header {
+    margin-bottom: 20px;
+}
+
+#tickets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.ticket {
+    display: inline-block;
+    margin-bottom: 20px;
+}

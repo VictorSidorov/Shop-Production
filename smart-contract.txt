@@ -1,0 +1,44 @@
+pragma solidity 0.6.0;
+
+contract Shop {
+
+    address payable owner;
+
+    struct Product {
+        address payable owner;
+        uint number;
+        uint price;
+        uint status;        // 0 - куплено 1 - выставлена на продажу  GASS!!!!
+    }
+
+    constructor() public {
+        owner = msg.sender;
+    }
+
+    Product[] public products;
+
+    function f_owner(uint _number, uint _price) public {
+        require(owner == msg.sender);
+        products.push(Product({
+                owner: msg.sender,
+                number: _number,
+                price: _price,
+                status: 1
+            }));
+    } 
+
+    function f_payer(uint _id) external payable {
+        require(products[_id].status == 1);
+        require(msg.value >= products[_id].price);
+        if (msg.value > products[_id].price) {
+                msg.sender.transfer(msg.value - products[_id].price);
+        }
+        products[_id].owner.transfer(products[_id].price);
+        products[_id].owner = msg.sender;
+        products[_id].status = 0;
+    }
+
+    function productlen() public view returns(uint){
+        return products.length;
+    }
+}
